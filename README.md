@@ -1,6 +1,10 @@
 # PSD-to-HTML
 A script that converts a Photoshop file into HTML/CSS
 
+## Installation
+
+`pip install -r requirements.txt`
+
 ## Usage
 `python psd.py my_photoshop.psd`
 
