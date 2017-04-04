@@ -1,8 +1,9 @@
 from psd_tools import PSDImage
 import re, sys, os, argparse
 
-parser = argparse.ArgumentParser(description="My Script")
+parser = argparse.ArgumentParser(description="A script that converts a Photoshop file into HTML/CSS Edit")
 parser.add_argument("-f", "--file", required=True)
+# parser.add_argument("-d", "--dynamic", action='store_true')
 args, leftovers = parser.parse_known_args()
 
 filelocation = os.getcwd()+'/'+args.file
@@ -44,11 +45,19 @@ def layerstoimage(layers):
       name = re.sub('©', '', name)
       print("Processing Layer: " + name)
 
+      # get width
+      width = layer.bbox[2] - layer.bbox[0]
+      if(args.dynamic):
+        width = psd.header.width/width
+        width = str(width) + '%'
+      else:
+        width = str(width) + 'px'
+
       # create css
       css += '#'+name+'{\n  left: ' + str(layer.bbox[0]) + 'px;\n'
       css += '  position: absolute;\n'
       css += '  top: ' + str(layer.bbox[1]) + 'px;\n'
-      css += '  width: ' + str(layer.bbox[2] - layer.bbox[0]) + 'px;\n'
+      css += '  width: ' + width + ';\n'
       css += '  height: ' + str(layer.bbox[3] - layer.bbox[1]) + 'px;\n'
       css += '  background-image: url("images/' + name + '.png");\n'
       css += '}\n'
