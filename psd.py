@@ -3,9 +3,7 @@ import re, sys, os
 
 filelocation = os.getcwd()+'/'+sys.argv[1]
 path = os.path.dirname(os.path.realpath(__file__))
-print(path)
 
-# psd = PSDImage.load('my_image.psd')
 psd = PSDImage.load(filelocation)
 
 elements = []
@@ -32,6 +30,7 @@ def layerstoimage(layers):
         else:
           return checkname
 
+      # create css
       name = namelayer(layer.name, 0)
       elements.append(name)
       name = re.sub(',','', name)
