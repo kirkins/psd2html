@@ -17,7 +17,7 @@ def layerstoimage(layers):
       html += site[0]
       css += site[1]
     else:
-      print(layer.bbox)
+      print('Processing layer: '+layer.name)
       # create css
       def namelayer(checkname, i):
         if(checkname in elements):
@@ -41,7 +41,7 @@ def layerstoimage(layers):
       css += '  top: ' + str(layer.bbox[1]) + 'px;\n'
       css += '  width: ' + str(layer.bbox[2] - layer.bbox[0]) + 'px;\n'
       css += '  height: ' + str(layer.bbox[3] - layer.bbox[1]) + 'px;\n'
-      css += '  background-image: url("' + name + '.png");\n'
+      css += '  background-image: url("images/' + name + '.png");\n'
       css += '}\n'
 
       # create html
@@ -49,7 +49,7 @@ def layerstoimage(layers):
 
       # save images as images
       layer_image = layer.as_PIL()
-      layer_image.save(path+'/bin/' + name + '.png')
+      layer_image.save(path+'/bin/images/' + name + '.png')
 
   return html, css
 

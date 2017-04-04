@@ -1,5 +1,5 @@
 *.swp
-bin/*.png
+bin/images/*.png
 bin/*.css
 bin/*.html
 bin/*.js
