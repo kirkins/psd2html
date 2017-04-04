@@ -30,13 +30,17 @@ def layerstoimage(layers):
         else:
           return checkname
 
-      # create css
+      # process name to make unique and strip special characters
       name = namelayer(layer.name, 0)
       elements.append(name)
       name = re.sub(',','', name)
       name = re.sub('\.','', name)
       name = re.sub('\s', '-', name)
       name = re.sub('\*', '-', name)
+      name = re.sub('©', '', name)
+      print("Processing Layer: " + name)
+
+      # create css
       css += '#'+name+'{\n  left: ' + str(layer.bbox[0]) + 'px;\n'
       css += '  position: absolute;\n'
       css += '  top: ' + str(layer.bbox[1]) + 'px;\n'
