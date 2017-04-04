@@ -3,13 +3,19 @@ import re, sys, os, argparse
 
 parser = argparse.ArgumentParser(description="A script that converts a Photoshop file into HTML/CSS Edit")
 parser.add_argument("-f", "--file", required=True)
+parser.add_argument("-o", "--output", required=False)
 # parser.add_argument("-d", "--dynamic", action='store_true')
 args, leftovers = parser.parse_known_args()
 
 filelocation = os.getcwd()+'/'+args.file
-path = os.path.dirname(os.path.realpath(__file__))
 
 psd = PSDImage.load(filelocation)
+
+output = ''
+if args.output is not None:
+  path = args.output
+else:
+  path = os.path.dirname(os.path.realpath(__file__))
 
 elements = []
 
