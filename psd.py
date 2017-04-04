@@ -47,11 +47,12 @@ def layerstoimage(layers):
 
       # get width
       width = layer.bbox[2] - layer.bbox[0]
-      if(args.dynamic):
-        width = psd.header.width/width
-        width = str(width) + '%'
-      else:
-        width = str(width) + 'px'
+      #  if(args.dynamic):
+      #    width = psd.header.width/width
+      #    width = str(width) + '%'
+      #  else:
+      #    width = str(width) + 'px'
+      width = str(width) + 'px'
 
       # create css
       css += '#'+name+'{\n  left: ' + str(layer.bbox[0]) + 'px;\n'
