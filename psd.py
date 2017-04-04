@@ -1,7 +1,11 @@
 from psd_tools import PSDImage
-import re, sys, os
+import re, sys, os, argparse
 
-filelocation = os.getcwd()+'/'+sys.argv[1]
+parser = argparse.ArgumentParser(description="My Script")
+parser.add_argument("-f", "--file", required=True)
+args, leftovers = parser.parse_known_args()
+
+filelocation = os.getcwd()+'/'+args.file
 path = os.path.dirname(os.path.realpath(__file__))
 
 psd = PSDImage.load(filelocation)
