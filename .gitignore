@@ -1,0 +1,5 @@
+*.swp
+bin/*.png
+bin/*.css
+bin/*.html
+bin/*.js
