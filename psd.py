@@ -17,7 +17,6 @@ def layerstoimage(layers):
       html += site[0]
       css += site[1]
     else:
-      print('Processing layer: '+layer.name)
       # if layer name is already used for an id append _n, where n is smallest availible number
       def namelayer(checkname, i):
         if(checkname in elements):
@@ -25,7 +24,8 @@ def layerstoimage(layers):
           # remove _n if i higher than 1
           if(i>1):
             splitstring = checkname.split('_')
-            checkname = ''.join(splitstring.pop())
+            splitstring.pop()
+            checkname = ''.join(splitstring)
           return namelayer(checkname+"_"+str(i), i)
         else:
           return checkname
@@ -36,6 +36,7 @@ def layerstoimage(layers):
       name = re.sub(',','', name)
       name = re.sub('\.','', name)
       name = re.sub('\s', '-', name)
+      name = re.sub('\*', '-', name)
       css += '#'+name+'{\n  left: ' + str(layer.bbox[0]) + 'px;\n'
       css += '  position: absolute;\n'
       css += '  top: ' + str(layer.bbox[1]) + 'px;\n'
