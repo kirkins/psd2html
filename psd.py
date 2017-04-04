@@ -18,11 +18,11 @@ def layerstoimage(layers):
       css += site[1]
     else:
       print('Processing layer: '+layer.name)
-      # create css
+      # if layer name is already used for an id append _n, where n is smallest availible number
       def namelayer(checkname, i):
         if(checkname in elements):
           i += 1
-          # remove _n if int higher than 1
+          # remove _n if i higher than 1
           if(i>1):
             splitstring = checkname.split('_')
             checkname = ''.join(splitstring.pop())
