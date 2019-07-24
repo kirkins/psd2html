@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 from psd_tools import PSDImage
 import re, sys, os, argparse
+import codecs
 
 parser = argparse.ArgumentParser(description="A script that converts a Photoshop file into HTML/CSS Edit")
 parser.add_argument("-f", "--file", required=True)
@@ -80,10 +82,10 @@ html += site[0]
 html += '</body>\n</html>'
 css += site[1]
 
-f = open(path+'/bin/index.html','w')
+f = codecs.open(path+'/bin/index.html','w', "utf-8")
 f.write(html)
 f.close()
 
-f = open(path+'/bin/index.css','w')
+f = codecs.open(path+'/bin/index.css','w', "utf-8")
 f.write(css)
 f.close()
